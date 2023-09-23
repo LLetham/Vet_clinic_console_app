@@ -1,5 +1,4 @@
 1	Bradshaw	Leondra 	Beachboy	dog	9	2	2015	4	18	2024
-40	Farsight	Abby	Growl	cat	11	28	2018	1	13	2024
 2	Hancock	Booker	Inko	cat	9	6	2015	4	27	2024
 3	Calderon	Alfonso	Cleff	guineapig	9	26	2015	5	11	2024
 4	Beard	Emmanuel	Titan	rabbit	2	21	2016	5	20	2024
@@ -13,8 +12,9 @@
 12	Spence	Daphne	Golfo	dog	6	8	2018	10	28	2024
 13	Espinoza	Roy	Kibo	dog	5	10	2019	10	31	2024
 14	Ballard	Jimmie	Ceska	dog	1	19	2020	11	20	2024
-15	Griffin	Ericka	Bronto	guineapig	8	30	2020	11	28	2024
+15	Griffin	Ericka	Bronto	guineapig	8	30	2020	12	5	2023
 16	Ibarra	Kris	Dungo	hamster	9	10	2020	1	4	2025
+17	Mueller	Sylvia	Nuro	cat	9	25	2020	1	16	2025
 18	Burton	Stan	Rocko	guineapig	5	5	2021	1	26	2025
 19	Mercer	Lamont	Happy	rabbit	8	3	2021	5	29	2025
 20	Mejia	Luis	Bria	cat	8	31	2021	7	17	2025
@@ -36,4 +36,5 @@
 36	Schaefer	Tricia	Dara	cat	3	6	2019	2	19	2025
 37	Nunez	Riley	Vitto	dog	3	9	2020	2	25	2025
 38	Willis	Cleveland	Cenos	cat	7	20	2020	4	11	2025
+39	Mcintosh	Otha	Delia	dog	2	24	2021	4	17	2025
 99999	99	99	99	99	99	99	99	99	99	99
