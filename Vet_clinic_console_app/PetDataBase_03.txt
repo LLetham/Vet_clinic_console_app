@@ -12,7 +12,7 @@
 12	Spence	Daphne	Golfo	dog	6	8	2018	10	28	2024
 13	Espinoza	Roy	Kibo	dog	5	10	2019	10	31	2024
 14	Ballard	Jimmie	Ceska	dog	1	19	2020	11	20	2024
-15	Griffin	Ericka	Bronto	guineapig	8	30	2020	12	5	2023
+15	Griffin	Ericka	Bronto	guineapig	8	30	2020	11	28	2024
 16	Ibarra	Kris	Dungo	hamster	9	10	2020	1	4	2025
 17	Mueller	Sylvia	Nuro	cat	9	25	2020	1	16	2025
 18	Burton	Stan	Rocko	guineapig	5	5	2021	1	26	2025
@@ -31,7 +31,7 @@
 31	Ayers	Val	Diemo	dog	8	19	2017	9	30	2024
 32	Valenzuela	Sharron	Amabilis	dog	10	7	2017	10	2	2024
 33	Lindsey	Tyron	Nanuk	cat	12	1	2017	1	18	2025
-34	Pierce	Alison	Gisi	dog	9	29	2018	1	21	2025
+34	Pierce	Alison	Gisi	dog	9	29	2018	11	14	2023
 35	Leach	Dana	Zuni	dog	12	10	2018	2	17	2025
 36	Schaefer	Tricia	Dara	cat	3	6	2019	2	19	2025
 37	Nunez	Riley	Vitto	dog	3	9	2020	2	25	2025

@@ -51,6 +51,10 @@ private:
 
 	char buff[26]; // an array of characters to get the date and time from now.
 	time_t now = time(0); // seconds since 01/01/1970. time_t class
+	// Store today's date as integer values.
+	int todayMonth;
+	int todayDay;
+	int todayYear;
 
 
 
@@ -78,12 +82,14 @@ public:
 	// function to calculate duration between between startDate and endDate.
 	// calculation is done in Years, Months and Days. Days are not counted between
 	// the start date sdate and the end date eDate.
-	void dateCalculator(int startMonth, int startDay, int startYear, int endMonth, int endDay, int endYear, int* diffMonthPtr, int* diffDayPtr, int* diffYearPtr) {
+	// Make start Date (e.g., sDate) always equal to today's date. if the eDate that is pass is before the
+	// sDate, the dates will be swapped before the calculation is performed.
+	void dateCalculator(int endMonth, int endDay, int endYear, int* diffMonthPtr, int* diffDayPtr, int* diffYearPtr) {
 
 		// Transfer dates passed to subroutine to local variables
-		sMonth = startMonth;
-		sDay = startDay;
-		sYear = startYear;
+		sMonth = todayMonth;
+		sDay = todayDay;
+		sYear = todayYear;
 
 		eMonth = endMonth;
 		eDay = endDay;
@@ -126,22 +132,22 @@ public:
 		if ((sYear > eYear) ||
 			((sYear == eYear) && (sMonth > eMonth)) ||
 			((sYear == eYear) && (sMonth == eMonth)) && (sDay > eDay)) {
-			cout << "End date occurs before Start date: switching dates" << endl;
+			//cout << "End date occurs before Start date: switching dates" << endl;
 			sMonth = endMonth;
 			sDay = endDay;
 			sYear = endYear;
 
-			eMonth = startMonth;
-			eDay = startDay;
-			eYear = startYear;
+			eMonth = todayMonth;
+			eDay = todayDay;
+			eYear = todayYear;
 
 			outputFlag = true;
 		}
 
-		if (outputFlag) {
-			cout << "Now from\t" << sMonth << "/" << sDay << "/" << sYear;
-			cout << "\tto\t" << eMonth << "/" << eDay << "/" << eYear << endl;
-		}
+		//if (outputFlag) {
+		//	cout << "Now from\t" << sMonth << "/" << sDay << "/" << sYear;
+		//	cout << "\tto\t" << eMonth << "/" << eDay << "/" << eYear << endl;
+		//}
 
 		// Note: 03/31/1987 to 05/05/1987 is counted as follows:
 		// 03/31/1987 - 04/30/1987 = 1 month even though there are not 31 days in April because a month past.
@@ -299,6 +305,76 @@ public:
 
 
 	}
+
+	/***************************************/
+	// Use a class function to get the current data a time.
+	// Extract the date and convert to interger values.
+	// Use the standard library time function to get today's date then
+	// convert into interger values that are stored in the class object.
+	void getTodaysDate() {
+
+		ctime_s(buff, sizeof buff, &now); // convert now to data and time
+		cout << "Local date and time: " << buff << endl;
+
+		// convert month to int number
+		// buff [4][5][6] = Jan, Feb, Mar, Apr, so forth
+		switch (buff[4]) {
+		case 'F':
+			todayMonth = 2;
+			break;
+		case 'S':
+			todayMonth = 9;
+			break;
+		case 'O':
+			todayMonth = 10;
+			break;
+		case 'N':
+			todayMonth = 11;
+			break;
+		case 'D':
+			todayMonth = 12;
+			break;
+		case 'M':
+			if (buff[6] == 'r') todayMonth = 3;
+			else todayMonth = 5;
+			break;
+		case 'A':
+			if (buff[5] == 'p') todayMonth = 4;
+			else todayMonth = 8;
+			break;
+		case 'J':
+			if ((buff[5] == 'u') && (buff[6] == 'n')) todayMonth = 6;
+			else if ((buff[5] == 'a') && (buff[6] == 'n')) todayMonth = 1;
+			else todayMonth = 7;
+			break;
+		default:
+			cout << "Problem finding Month of current date" << endl;
+		}
+
+		// convert day to int number
+		// refer to ascii table.
+		// buffer above has: [8] [9]: ' ' '1' - '9'
+		//                   [8] [9]: '1' '0' - '9'
+		//                   [8] [9]: '2' '0' - '9'
+		//                   [8] [9]: '3' '0' - '1'
+		if (buff[8] == ' ') {
+			todayDay = buff[9] - 0x30;
+		}
+		else if ((buff[8] == '1') || (buff[8] == '2') || (buff[8] == '3')) {
+			todayDay = ((buff[8] - 0x30) * 10) + (buff[9] - 0x30);
+		}
+
+		// convert year to int number
+		// refer to ascii table.
+		// buffer above has: [20] [21] [22] [23]: '1 - 9' '0 - 9' '0 - 9' '0 - 9'
+		// 1970 - 9999
+		todayYear = ((buff[20] - 0x30) * 1000) + ((buff[21] - 0x30) * 100) + ((buff[22] - 0x30) * 10) + ((buff[23] - 0x30) * 1);
+
+		cout << "Today's date M/D/YYYY = " << todayMonth << "/" << todayDay << "/" << todayYear << endl;
+
+
+	}
+
 
 
 };

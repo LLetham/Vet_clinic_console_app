@@ -47,7 +47,7 @@ int main()
 	int i = 0;
 	int j = 0;
 	int k = 0;
-	int todayDay, todayMonth, todayYear;
+	//int todayDay, todayMonth, todayYear;
 	int durationDay, durationMonth, durationYear;
 	int mainMenuSelection = 6;
 
@@ -75,9 +75,8 @@ int main()
 	// then reopened to truncate.
 	outFileName = "PetDataBase_03.txt";
 
-	// Get today's date in integer values.
-	dc.todayDate(&todayMonth, &todayDay, &todayYear);
-	cout << "Today's date M/D/YYYY = " << todayMonth << "/" << todayDay << "/" << todayYear << endl << endl;
+	// Get today's date in integer values and store in class object
+	dc.getTodaysDate();
 
 	// Read in the database from the text file.
 	linkedList.initLinkedList(infile);
@@ -111,20 +110,16 @@ int main()
 			if (matchPtr == NULL) cout << "Record not found" << endl;
 			else {
 				linkedList.displaySingleNode(matchPtr);
-				dc.dateCalculator(matchPtr->birthMonth, matchPtr->birthDay, matchPtr->birthYear,
-					todayMonth, todayDay, todayYear,
-					&durationMonth, &durationDay, &durationYear);
+				dc.dateCalculator(matchPtr->birthMonth, matchPtr->birthDay, matchPtr->birthYear, &durationMonth, &durationDay, &durationYear);
 				cout << "Age of\t" << matchPtr->petName << ":\t\t" <<
-					durationYear << " year\t" <<
-					durationMonth << " month\t" <<
+					durationYear << " year  " <<
+					durationMonth << " month  " <<
 					durationDay << " day" << endl;
 
-				dc.dateCalculator(todayMonth, todayDay, todayYear,
-					matchPtr->apptMonth, matchPtr->apptDay, matchPtr->apptYear,
-					&durationMonth, &durationDay, &durationYear);
+				dc.dateCalculator(matchPtr->apptMonth, matchPtr->apptDay, matchPtr->apptYear, &durationMonth, &durationDay, &durationYear);
 				cout << "Time to next appt:\t" <<
-					durationYear << " year\t" <<
-					durationMonth << " month\t" <<
+					durationYear << " year  " <<
+					durationMonth << " month  " <<
 					durationDay << " day" << endl;
 			}
 			break;
@@ -140,20 +135,16 @@ int main()
 			else {
 				linkedList.displaySingleNode(matchPtr);
 
-				dc.dateCalculator(matchPtr->birthMonth, matchPtr->birthDay, matchPtr->birthYear,
-					todayMonth, todayDay, todayYear,
-					&durationMonth, &durationDay, &durationYear);
+				dc.dateCalculator(matchPtr->birthMonth, matchPtr->birthDay, matchPtr->birthYear, &durationMonth, &durationDay, &durationYear);
 				cout << "Age of\t" << matchPtr->petName << ":\t\t" <<
-					durationYear << " year\t" <<
-					durationMonth << " month\t" <<
+					durationYear << " year  " <<
+					durationMonth << " month  " <<
 					durationDay << " day" << endl;
 
-				dc.dateCalculator(todayMonth, todayDay, todayYear,
-					matchPtr->apptMonth, matchPtr->apptDay, matchPtr->apptYear,
-					&durationMonth, &durationDay, &durationYear);
+				dc.dateCalculator(matchPtr->apptMonth, matchPtr->apptDay, matchPtr->apptYear, &durationMonth, &durationDay, &durationYear);
 				cout << "Time to next appt:\t" <<
-					durationYear << " year\t" <<
-					durationMonth << " month\t" <<
+					durationYear << " year  " <<
+					durationMonth << " month  " <<
 					durationDay << " day" << endl;
 
 				cout << "Enter new appointment month (1, 2, 3 . . . 12):\t";
@@ -165,20 +156,16 @@ int main()
 
 				linkedList.newApptDate(matchPtr, apptMonthM, apptDayM, apptYearM);
 				linkedList.displaySingleNode(matchPtr);
-				dc.dateCalculator(matchPtr->birthMonth, matchPtr->birthDay, matchPtr->birthYear,
-					todayMonth, todayDay, todayYear,
-					&durationMonth, &durationDay, &durationYear);
+				dc.dateCalculator(matchPtr->birthMonth, matchPtr->birthDay, matchPtr->birthYear, &durationMonth, &durationDay, &durationYear);
 				cout << "Age of\t" << matchPtr->petName << ":\t\t" <<
-					durationYear << " year\t" <<
-					durationMonth << " month\t" <<
+					durationYear << " year  " <<
+					durationMonth << " month  " <<
 					durationDay << " day" << endl;
 
-				dc.dateCalculator(todayMonth, todayDay, todayYear,
-					matchPtr->apptMonth, matchPtr->apptDay, matchPtr->apptYear,
-					&durationMonth, &durationDay, &durationYear);
+				dc.dateCalculator(matchPtr->apptMonth, matchPtr->apptDay, matchPtr->apptYear, &durationMonth, &durationDay, &durationYear);
 				cout << "Time to next appt:\t" <<
-					durationYear << " year\t" <<
-					durationMonth << " month\t" <<
+					durationYear << " year  " <<
+					durationMonth << " month  " <<
 					durationDay << " day" << endl;
 
 				//cout << "New appointment date set" << endl;
@@ -226,20 +213,16 @@ int main()
 			matchPtr = linkedList.addNewRecord(ownerLastNameM, ownerFirstNameM, petNameM, petTypeM,
 				birthMonthM, birthDayM, birthYearM, apptMonthM, apptDayM, apptYearM);
 			linkedList.displaySingleNode(matchPtr);
-			dc.dateCalculator(matchPtr->birthMonth, matchPtr->birthDay, matchPtr->birthYear,
-				todayMonth, todayDay, todayYear,
-				&durationMonth, &durationDay, &durationYear);
+			dc.dateCalculator(matchPtr->birthMonth, matchPtr->birthDay, matchPtr->birthYear, &durationMonth, &durationDay, &durationYear);
 			cout << "Age of\t" << matchPtr->petName << ":\t\t" <<
-				durationYear << " year\t" <<
-				durationMonth << " month\t" <<
+				durationYear << " year  " <<
+				durationMonth << " month  " <<
 				durationDay << " day" << endl;
 
-			dc.dateCalculator(todayMonth, todayDay, todayYear,
-				matchPtr->apptMonth, matchPtr->apptDay, matchPtr->apptYear,
-				&durationMonth, &durationDay, &durationYear);
+			dc.dateCalculator(matchPtr->apptMonth, matchPtr->apptDay, matchPtr->apptYear, &durationMonth, &durationDay, &durationYear);
 			cout << "Time to next appt:\t" <<
-				durationYear << " year\t" <<
-				durationMonth << " month\t" <<
+				durationYear << " year  " <<
+				durationMonth << " month  " <<
 				durationDay << " day" << endl;
 
 			// Write linked list to output file
