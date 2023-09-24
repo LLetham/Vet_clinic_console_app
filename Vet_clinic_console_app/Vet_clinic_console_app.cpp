@@ -14,6 +14,7 @@
 #include <climits> // INT_MIN, INT_MAX
 #include <limits>  // std::numeric_limits::streamsize::max()
 #include <stdlib.h>
+#include <list>
 #include "LinkedListClass.h"
 #include "DateCalculatorClass.h"
 
@@ -74,6 +75,8 @@ int main()
 	// causes it to append rather than truncate. The file must be closed
 	// then reopened to truncate.
 	outFileName = "PetDataBase_03.txt";
+	cout << "Write file:\t" << outFileName << endl;
+
 
 	// Get today's date in integer values and store in class object
 	dc.getTodaysDate();

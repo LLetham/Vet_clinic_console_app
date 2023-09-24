@@ -12,8 +12,7 @@
 #include <climits> // INT_MIN, INT_MAX
 #include <ctime>
 #include <stdlib.h>
-// #include "dateCalculatorClass.h"
-
+#include <list>
 using namespace std;
 
 #define DEBUG_initLinkedList 0
@@ -94,10 +93,25 @@ private:
 	int maxRecordNumber = 0;
 	bool matchFound = false;
 
+	//// STL variables
+	//// here!!!!!!!!!!!!!!!!!!!!!!!!
+	//	// STL list class
+	//list<PetRecord> LL;
+
+
+
+
 	int i;
 
 
 public:
+
+	/************************************************/
+	void initSTLLinkedList(ifstream& infileC) {
+
+	}
+
+
 
 	/************************************************/
 	void initLinkedList(ifstream& infileC) {

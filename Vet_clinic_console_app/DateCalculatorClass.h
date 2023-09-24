@@ -15,9 +15,9 @@ using namespace std;
 
 
 // functions in dateCalculatorClass
-// 	void dateCalculator(int startMonth, int startDay, int startYear, 
-// int endMonth, int endDay, int endYear, int* diffMonthPtr, int* diffDayPtr, int* diffYearPtr)
+// 	void dateCalculator(int endMonth, int endDay, int endYear, int* diffMonthPtr, int* diffDayPtr, int* diffYearPtr)
 // 	void todayDate(int* todayMonthS, int* todayDayS, int* todayYearS)
+// 	void getTodaysDate()
 // 	bool isLeapYear(int year)
 
 
@@ -45,8 +45,6 @@ private:
 	int daysInMonthsNonLeap[13] = { 31,31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31 };
 	int daysInMonthsLeap[13] = { 31,31, 29, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31 };
 	int* daysInMonthPtr;
-	const int daysInYearLeap = 366;
-	const int daysInYearNonLeap = 365;
 	const int monthsInYear = 12;
 
 	char buff[26]; // an array of characters to get the date and time from now.
@@ -55,8 +53,6 @@ private:
 	int todayMonth;
 	int todayDay;
 	int todayYear;
-
-
 
 public:
 
@@ -77,6 +73,20 @@ public:
 		return (leapYear);
 	}
 
+	/***************************************/
+	// This is an overloaded version of dataCalcualator that sets the start date, sDate, to today's date
+	void dateCalculator(int endMonth, int endDay, int endYear, int* diffMonthPtr, int* diffDayPtr, int* diffYearPtr) {
+
+		sMonth = todayMonth;
+		sDay = todayDay;
+		sYear = todayYear;
+
+		dateCalculator (todayMonth, todayDay, todayYear,
+			endMonth, endDay, endYear,
+			diffMonthPtr, diffDayPtr, diffYearPtr);
+}
+
+
 
 	/***************************************/
 	// function to calculate duration between between startDate and endDate.
@@ -84,12 +94,14 @@ public:
 	// the start date sdate and the end date eDate.
 	// Make start Date (e.g., sDate) always equal to today's date. if the eDate that is pass is before the
 	// sDate, the dates will be swapped before the calculation is performed.
-	void dateCalculator(int endMonth, int endDay, int endYear, int* diffMonthPtr, int* diffDayPtr, int* diffYearPtr) {
+	void dateCalculator(int startMonth, int startDay, int startYear, 
+		int endMonth, int endDay, int endYear, 
+		int* diffMonthPtr, int* diffDayPtr, int* diffYearPtr) {
 
 		// Transfer dates passed to subroutine to local variables
-		sMonth = todayMonth;
-		sDay = todayDay;
-		sYear = todayYear;
+		sMonth = startMonth;
+		sDay = startDay;
+		sYear = startYear;
 
 		eMonth = endMonth;
 		eDay = endDay;
@@ -137,9 +149,9 @@ public:
 			sDay = endDay;
 			sYear = endYear;
 
-			eMonth = todayMonth;
-			eDay = todayDay;
-			eYear = todayYear;
+			eMonth = startMonth;
+			eDay = startDay;
+			eYear = startYear;
 
 			outputFlag = true;
 		}
@@ -371,8 +383,6 @@ public:
 		todayYear = ((buff[20] - 0x30) * 1000) + ((buff[21] - 0x30) * 100) + ((buff[22] - 0x30) * 10) + ((buff[23] - 0x30) * 1);
 
 		cout << "Today's date M/D/YYYY = " << todayMonth << "/" << todayDay << "/" << todayYear << endl;
-
-
 	}
 
 
