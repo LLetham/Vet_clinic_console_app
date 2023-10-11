@@ -10,11 +10,9 @@
 #include <cstdlib>
 #include <stdio.h>
 #include <time.h>
-//#include <ctime>
 #include <climits> // INT_MIN, INT_MAX
 #include <limits>  // std::numeric_limits::streamsize::max()
 #include <stdlib.h>
-#include <list>
 #include "LinkedListClass.h"
 #include "DateCalculatorClass.h"
 
